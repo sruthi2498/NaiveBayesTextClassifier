@@ -132,8 +132,10 @@ print("Test on dev data")
 
 test_data = dev_data
 model = nbutil.getModel()
-result = nbutil.getPredictions(test_data,model,predKnown=True)
+wrong_preds1,wrong_preds2,result = nbutil.getPredictions(test_data,model,predKnown=True)
 
+# for row in wrong_preds1:
+#     print(row)
 
 train_data_arr = getDataArr(data)
 model = {}
