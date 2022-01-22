@@ -598,7 +598,6 @@ awkwardly
 awoke
 awoken
 awry
-b
 babies
 baby
 back
@@ -1091,7 +1090,6 @@ buyers
 buying
 buzzing
 bye
-c
 cab
 cabbed
 cabinet
@@ -2510,7 +2508,6 @@ duvet
 duvets
 dvd
 dysfunctional
-e
 eager
 eagerly
 ear
@@ -2860,7 +2857,6 @@ extrodinary
 exudes
 eye
 eyes
-f
 fab
 faboulous
 fabricbased
@@ -4190,7 +4186,6 @@ itll
 itright
 itunes
 ive
-j
 jack
 jackets
 jackhammering
@@ -4319,7 +4314,6 @@ knows
 koolaid
 kudos
 ky
-l
 la
 labelled
 labor
@@ -5078,7 +5072,6 @@ mutual
 myriad
 myspa
 mysterious
-n
 naan
 nab
 nachos
@@ -5494,7 +5487,6 @@ ow
 owned
 owners
 ownership
-p
 pacage
 pace
 pack
@@ -8244,7 +8236,6 @@ types
 typical
 typically
 typing
-u
 ubermodern
 ubtil
 ugh
@@ -8581,7 +8572,6 @@ vow
 vowed
 vs
 vuitton
-w
 wa
 waaaay
 wacker
@@ -8895,7 +8885,6 @@ wrong
 wrote
 wtf
 wtih
-x
 yahoo
 yappy
 yards
@@ -8928,7 +8917,6 @@ youll
 young
 younger
 youngershe
-youre
 youth
 youve
 yr
