@@ -18,9 +18,18 @@ def extractCompleteVocab(data):
 vocab = extractCompleteVocab(data)
 
 print("vocab : ",len(vocab))
-nbutil.dumpVocab(vocab)
 
-
+vocab_count = nbpreprocess.countVocabOccurrences(vocab,data)
+highFreqThresh = int(0.05 * len(vocab_count))
+lowFreqThresh = 1
+vocab_final = []
+for w,c in vocab_count:
+    if c<highFreqThresh and c>lowFreqThresh:
+        vocab_final.append(w)
+print("vocab : ",len(vocab_final))
+# print(vocab_final)
+nbutil.dumpVocab(vocab_final)
+vocab = vocab_final
 dev_data = [d for d in data if d["foldNum"]==1]
 train_data = [d for d in data if d["foldNum"]!=1]
 
@@ -30,8 +39,9 @@ def getDataArr(data):
     print(data_arr.shape)
     for i,row in enumerate(data):
         for token in row["tokens"]:
-            token_index = vocab.index(token)
-            data_arr[i][token_index] = 1
+            if token in vocab:
+                token_index = vocab.index(token)
+                data_arr[i][token_index] = 1
         data_arr[i][-2] = row["class1"]
         data_arr[i][-1] = row["class2"]
     # print(class1_data)
@@ -134,8 +144,6 @@ test_data = dev_data
 model = nbutil.getModel()
 wrong_preds1,wrong_preds2,result = nbutil.getPredictions(test_data,model,predKnown=True)
 
-# for row in wrong_preds1:
-#     print(row)
 
 train_data_arr = getDataArr(data)
 model = {}
