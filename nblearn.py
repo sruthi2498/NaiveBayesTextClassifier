@@ -38,7 +38,7 @@ def filterVocab(vocab, data):
     vocab_count = nbutil.countVocabOccurrences(vocab,data)
     # print(vocab_count[:20])
     # print(vocab_count[-20:])
-    highFreqThresh = 0.05 * len(vocab)
+    highFreqThresh = 0.5 * len(data)
     lowFreqThresh = vocab_count[-1][-1]
     vocab_final = []
     for w,c in vocab_count:

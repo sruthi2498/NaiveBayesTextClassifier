@@ -88,6 +88,7 @@ alas
 alcove
 alert
 alive
+all
 allergic
 allergy
 alley
@@ -119,6 +120,7 @@ ammenity
 among
 amount
 ample
+an
 andor
 andrew
 ands
@@ -183,6 +185,7 @@ art
 article
 artistic
 artwork
+as
 asap
 asha
 ashamed
@@ -442,6 +445,7 @@ buses
 business
 bust
 bustle
+but
 butter
 button
 buy
@@ -558,6 +562,7 @@ city
 claim
 class
 classic
+clean
 cleaner
 cleanest
 cleanliness
@@ -1226,6 +1231,7 @@ friend
 friendliest
 friendliness
 fries
+from
 front
 frontdesk
 fruit
@@ -1327,6 +1333,7 @@ grapes
 gratuity
 gray
 grease
+great
 greater
 greatest
 green
@@ -1692,6 +1699,7 @@ lifetime
 lift
 light
 lightbulb
+like
 limit
 limp
 line
@@ -1713,6 +1721,7 @@ loaded
 lobbie
 lobby
 local
+locate
 location
 lock
 locker
@@ -1803,6 +1812,7 @@ mattresses
 may
 maybe
 mccormick
+me
 meal
 mean
 meant
@@ -1946,6 +1956,7 @@ nicest
 nickel
 nickle
 niece
+night
 nightclub
 nightlife
 nightmare
@@ -2012,6 +2023,7 @@ oldfashioned
 omelet
 omelettes
 omni
+one
 onebedroom
 oneday
 oneway
@@ -2043,6 +2055,7 @@ other
 otherwise
 ottoman
 ouch
+out
 outcome
 outdated
 outdoor
@@ -2582,6 +2595,7 @@ series
 serious
 serve
 server
+service
 session
 set
 setting
@@ -2696,6 +2710,7 @@ snobby
 snooty
 snow
 snubbed
+so
 soak
 soap
 soda
@@ -2769,6 +2784,7 @@ spring
 sq
 square
 st
+staff
 stain
 stair
 stairwell
@@ -2786,6 +2802,7 @@ starving
 starwood
 state
 statement
+stay
 steak
 steakhouse
 steal
@@ -2990,6 +3007,7 @@ til
 tile
 till
 tim
+time
 timewe
 tiny
 tip
@@ -3189,6 +3207,7 @@ vent
 venue
 verify
 versed
+very
 via
 vibe
 vicinity
@@ -3284,6 +3303,7 @@ wicked
 wide
 wife
 wifi
+will
 wind
 window
 wine
@@ -3340,6 +3360,7 @@ yielded
 yoga
 yogurt
 york
+you
 young
 younger
 yours
