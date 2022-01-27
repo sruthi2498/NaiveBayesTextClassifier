@@ -1,14 +1,32 @@
 import os 
 import string
-from difflib import get_close_matches,SequenceMatcher
+import re
 import nbutil
-import json
-import time
 
 punctuations = set(list(string.punctuation))
 
-with open("stopwords.txt") as f:
-    stopwords = set([w.replace("\n","") for w in f.readlines()])
+def replaceStopwords(word):
+    word = re.sub(r'\bno(r|t|w)*\b',"",word)
+    word = re.sub(r'\bon(ce|ly)*\b',"",word)
+    word = re.sub(r'\byou[\']*(re|ll|r|ve|self|selves|d)\b', '', word)
+    word = re.sub(r'\bagain(st)*\b', '', word)
+    word = re.sub(r'\b(would|should|could|did|need|are|were|was|must|have|has|had|might|must|does|do|shan|is|won)[\'|\"]*n*[\'|\"]*t*(ve)*\b', '', word)
+    word = re.sub(r'\ba[m|n][d|y]\b',"",word)
+    word = re.sub(r'\bwh(ere|at|en|ich|y|ile|hom)\b',"",word)
+    word = re.sub(r'\b(her|him|his|my)(self)*\b',"",word)
+    word = re.sub(r'\b(her)(s|e)*\b',"",word)
+    word = re.sub(r'\b(she)[\']*(s)*\b',"",word)
+    word = re.sub(r'\b(it|our|them)[\']*(s|self|selves)*\b',"",word)
+    word = re.sub(r'\b(that)[\']*(ll)*\b',"",word)
+    word = re.sub(r'\b(the)(ir|re|se|s|y|n)*\b',"",word)
+    word = re.sub(r'\b(th)(is|ose)\b',"",word)
+    word = re.sub(r'\b(i)[\'|\"]*(d|ll|m|ve|f|m|n|t|nto)\b',"",word)
+    word = re.sub(r'\b(to)o*\b',"",word)
+    word = re.sub(r'\b([a-z])\1+\b',"",word)
+    word = re.sub(r'\b(have|be|dur)(ing)\b',"",word)
+    return word 
+
+
 
 
 def tokenizeText(text):
@@ -16,7 +34,7 @@ def tokenizeText(text):
     for punct in punctuations:
         text = text.replace(punct,"")
     words = list(set(text.split(" ")))
-    tokens = [w for w in words if w not in stopwords and w.isalpha() and len(w)>1]
+    tokens = [ replaceStopwords(w) for w in words if  w.isalpha() and len(w)>1]
     return tokens
 
 
@@ -61,51 +79,13 @@ def extractData(path_to_input, train=True):
                     
     return data_array
 
-def exploreVocab():
-    vocab = nbutil.getVocab()
-    for word in vocab[20:40]:
-        print(word, get_close_matches(word,vocab[20:40]))
-        for word2 in vocab[20:40]:
-            if word2!=word:
-                print("score for: " + word + " vs. " + word2 + " = " + str(SequenceMatcher(None, word, word2).ratio()))
 
-def countVocabOccurrences(vocab,data):
-    vocab_count={}
-    for w in vocab:
-        vocab_count[w]=0
-        for i in range(len(data)):
-            for t in data[i]["tokens"]:
-                if w==t:
-                    vocab_count[w]+=1
-    return sorted(vocab_count.items(), key=lambda x : x[1],reverse=True)
-
-def getVocabCloseMatches():
-    vocab = nbutil.getVocab()
-    marked = [False]*len(vocab)
-    closest_match = {}
-    t1= time.time()
-    for i,word in enumerate(vocab):
-        if not marked[i]:
-            marked[i] = True
-            closest_match[word] = []
-            word_matches = get_close_matches(word,vocab, n=10)
-            for word2 in word_matches:
-                if word2!=word:
-                    score = SequenceMatcher(None, word, word2).ratio()
-                    if score>0.89:
-                        marked[vocab.index(word2)]= True
-                        closest_match[word].append(word2)
-            if not closest_match[word]:
-                closest_match.pop(word)
-
-
-    # print(closest_match)
-
-    closest_word_map = {}
-    for k,v in closest_match.items():
-        for w in v:
-            closest_word_map[w] = k
-
-    with open("closest_word_map.txt","w") as f:
-        json.dump(closest_word_map,f)
-    print(time.time()-t1)
+def retokenizeData(data,vocab):
+    for i in range(len(data)):
+        new_tokens = set()
+        for t in data[i]["tokens"]:
+            t = nbutil.getBaseWord(vocab,t)
+            if t not in new_tokens:
+                new_tokens.add(t)
+        data[i]["tokens"] = list(new_tokens)
+    return data

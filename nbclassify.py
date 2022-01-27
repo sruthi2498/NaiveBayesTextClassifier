@@ -13,5 +13,5 @@ vocab = nbutil.getVocab()
 print("vocab : ",len(vocab))
 
 model = nbutil.getModel()
-_,_,result = nbutil.getPredictions(data,model)
+result = nbutil.getPredictions(data,model,vocab)
 nbutil.dumpResult(result,"nboutput.txt")
